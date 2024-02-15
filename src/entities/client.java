@@ -39,4 +39,8 @@ public class client {
     public void setGmail(String gmail) {
         Gmail = gmail;
     }
+
+    public String toString() {
+        return name + " (" + sdf.format(birthDate) + ") - " + email;
+    }
 }
