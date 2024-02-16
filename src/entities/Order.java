@@ -48,14 +48,30 @@ public class Order {
         Client = client;
     }
 
+    public void addItem(orderItem item){
+        items.add(item);
+    }
+
+    public void removeItem(orderItem item){
+        items.remove(item);
+    }
+
+    public double total(){
+        double sum = 0;
+        for(orderItem item : items){
+            sum += item.subTotal();
+        }
+        return sum;
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Order moment: ");
         sb.append(sdf.format(moment) + "\n");
         sb.append("Order status: ");
-        sb.append(sdf.format(Status) + "\n");
+        sb.append(Status + "\n");
         sb.append("Client: ");
-        sb.append(sdf.format(Client) + "\n");
+        sb.append(Client + "\n");
         sb.append("Order items:\n");
         for (orderItem item : items) {
             sb.append(item + "\n");
