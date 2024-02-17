@@ -6,7 +6,7 @@ public class orderItem {
     product product = new product();
     private int quantity;
 
-    private double price = product.getPrice();
+    private Double price = product.getPrice();
 
     public orderItem() {
     }

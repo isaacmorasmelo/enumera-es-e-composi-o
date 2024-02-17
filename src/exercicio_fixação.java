@@ -1,25 +1,24 @@
-import javax.swing.border.TitledBorder;
-import java.awt.*;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 import java.text.ParseException;
 
+import complemento.OrderStatus;
 import entities.Order;
 import entities.client;
 import entities.orderItem;
 import entities.product;
 
+
 public class exercicio_fixação {
     public static void main(String[] args) throws ParseException {
 
-        SimpleDateFormat birthDate = new SimpleDateFormat("dd/MM/yyyy");
-
-
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         client client = new client();
-        Order Order = new Order();
+        Order order = new Order();
         orderItem orderItem = new orderItem();
         product product = new product();
 
@@ -32,14 +31,17 @@ public class exercicio_fixação {
         System.out.print("Email: ");
         String Email = sc.nextLine();
         System.out.print("Birth date (DD/MM/YYYY): ");
-        Date birth = birthDate.parse(sc.next());
+        Date birthDate = sdf.parse(sc.next());
 
 
-        client client1 = new client(name,Email,birth);
+        client client1 = new client(name,Email,birthDate);
         System.out.println("Enter order data:");
-        orderItem order = new orderItem();
 
-        System.out.println("Order status: " + Order.getStatus());
+        sc.nextLine();
+        System.out.print("Order status: ");
+        String status = sc.nextLine();
+
+        Order Order = new Order(sdf.parse("20/04/2018 11:25:09"), OrderStatus.valueOf(status), client1);
 
         System.out.println("How many items to this order?");
         int quantity = sc.nextInt();
@@ -55,12 +57,12 @@ public class exercicio_fixação {
             System.out.print("Product price: ");
             product.setPrice(sc.nextDouble());
 
-            System.out.println("Quantity: ");
+            System.out.print("Quantity: ");
             orderItem.setQuantity(sc.nextInt());
         }
 
-        System.out.println("ORDER SUMMARY:" + client1.toString());
-        System.out.println("Client: " + order.toString());
+        System.out.println("ORDER SUMMARY:" + Order.toString());
+        System.out.println("Client: " + client.toString());
         System.out.println("Order Items: " + orderItem.toString());
 
     }

@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class client {
 
-    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private static final SimpleDateFormat Sdf = new SimpleDateFormat("dd/MM/yyyy");
     private String name;
     private String Gmail;
     private Date birthDate;
@@ -44,6 +44,6 @@ public class client {
     }
 
     public String toString() {
-        return name + " (" + sdf.format (birthDate) + ") - " + Gmail;
+        return name + " (" + birthDate + ") - " + Gmail;
     }
 }

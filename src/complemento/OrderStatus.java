@@ -1,9 +1,8 @@
 package complemento;
 
 public enum OrderStatus {
-    Pending_Payment,
+    PENDING_PAYMENT,
     PROCESSING,
     SHIPPED,
-    DELIVERED
-
+    DELIVERED;
 }
