@@ -15,55 +15,51 @@ import entities.product;
 public class exercicio_fixação {
     public static void main(String[] args) throws ParseException {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-        client client = new client();
-        Order order = new Order();
-        orderItem orderItem = new orderItem();
-        product product = new product();
-
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         System.out.println("Enter Client Data: ");
         System.out.print("Name: ");
         String name = sc.nextLine();
         System.out.print("Email: ");
-        String Email = sc.nextLine();
+        String email = sc.next();
+        sc.nextLine();
         System.out.print("Birth date (DD/MM/YYYY): ");
         Date birthDate = sdf.parse(sc.next());
 
 
-        client client1 = new client(name,Email,birthDate);
+        client client = new client(name, email, birthDate);
+
         System.out.println("Enter order data:");
 
-        sc.nextLine();
-        System.out.print("Order status: ");
-        String status = sc.nextLine();
+        System.out.print("Status: ");
+        OrderStatus status = OrderStatus.valueOf(sc.next());
 
-        Order Order = new Order(sdf.parse("20/04/2018 11:25:09"), OrderStatus.valueOf(status), client1);
-
-        System.out.println("How many items to this order?");
+        Order order = new Order(new Date(), status, client);
+        System.out.print("How many items to this order?");
         int quantity = sc.nextInt();
 
         for (int i = 1; i <= quantity; i++) {
 
-            System.out.printf("Enter %d# item data:\n",i);
+            System.out.printf("Enter %d# item data:\n", i);
             sc.nextLine();
 
             System.out.print("Product name: ");
-            product.setName(sc.nextLine());
+            String Pname = sc.nextLine();
 
             System.out.print("Product price: ");
-            product.setPrice(sc.nextDouble());
+            double price = sc.nextDouble();
+
+            product product = new product(Pname, price);
 
             System.out.print("Quantity: ");
-            orderItem.setQuantity(sc.nextInt());
+            int Pquantity = sc.nextInt();
+            orderItem OrderItem = new orderItem(product, Pquantity, price);
+            order.addItem(OrderItem);
         }
 
-        System.out.println("ORDER SUMMARY:" + Order.toString());
-        System.out.println("Client: " + client.toString());
-        System.out.println("Order Items: " + orderItem.toString());
-
+        System.out.println("ORDER SUMMARY:");
+        System.out.println(order);
     }
 }

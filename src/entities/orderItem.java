@@ -8,9 +8,6 @@ public class orderItem {
 
     private Double price = product.getPrice();
 
-    public orderItem() {
-    }
-
     public orderItem(entities.product product, int quantity, double price) {
         this.product = product;
         this.quantity = quantity;

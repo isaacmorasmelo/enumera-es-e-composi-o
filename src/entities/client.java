@@ -5,13 +5,10 @@ import java.util.Date;
 
 public class client {
 
-    private static final SimpleDateFormat Sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private String name;
     private String Gmail;
     private Date birthDate;
-
-    public client() {
-    }
 
     public client(String name, String gmail, Date BirthDate) {
         this.name = name;

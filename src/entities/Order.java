@@ -15,8 +15,6 @@ public class Order {
     private client Client;
 
     private List <orderItem> Items = new ArrayList<>();
-    public Order() {
-    }
 
     public Order(Date moment, OrderStatus status, client client) {
         this.moment = moment;
@@ -72,7 +70,7 @@ public class Order {
         StringBuilder sb = new StringBuilder();
 
         sb.append("Order moment: ");
-        sb.append(sdf.format(moment)).append("\n");
+        sb.append(moment).append("\n");
         sb.append("Order status: ");
         sb.append(Status).append("\n");
         sb.append("Client: ");
